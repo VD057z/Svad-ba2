@@ -21,8 +21,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
   updateCountdown(); // Запустить счетчик сразу
   setInterval(updateCountdown, 1000); // Обновлять счетчик каждую секунду
+    // 3. Анимация секций
+   const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+              entry.target.classList.add('show')
+          } else{
+               entry.target.classList.remove('show')
+          }
+        })
+    },
+      {
+          threshold: 0.1
+      }
+  );
 
-
+sections.forEach(section => {
+    observer.observe(section)
+})
   // 2. Форма опроса
     const alcoholOtherRadio = document.getElementById('alcohol-other');
     const alcoholOtherText = document.getElementById('alcohol-other-text');
