@@ -1,198 +1,67 @@
-body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    background-color: #f4f4f4; /* Цвет фона по умолчанию*/
-    color: #333;
-  background-image: url("background.jpg"); /* Фоновое изображение */
-    background-size: cover; /* Масштабирование изображения */
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* Фиксируем фоновое изображение */
-}
+document.addEventListener('DOMContentLoaded', function() {
+  // 1. Счетчик обратного отсчета
+  function updateCountdown() {
+    const weddingDate = new Date('[2025, 6, 19]T00:00:00'); // Замените [Год, месяц (0-11), день] на дату вашей свадьбы. Месяц начинается с 0 (январь)
+    const now = new Date();
+    const timeDifference = weddingDate.getTime() - now.getTime();
 
-header {
-    background-color: #fff;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+    if (timeDifference > 0) {
+      const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-header h1 {
-    font-size: 2em; /* Уменьшенный размер заголовка */
-    margin-bottom: 10px;
-    color: #007bff;
-}
-
-#countdown {
-    font-size: 1.2em; /* Уменьшенный размер счетчика */
-    margin-top: 10px;
-    text-align: center; /* Выравнивание по центру */
-    padding: 20px 0; /* Отступы сверху и снизу */
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    margin: 20px 0;
-    display: block; /* Добавлено */
-}
-
-main {
-    padding: 20px;
-}
-
-section {
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-section h2 {
-    color: #007bff;
-    margin-top: 0;
-}
-
-.couple-info img{
-    width: 100px; /* Уменьшенные размеры фото */
-    height: auto;
-    margin: 10px;
-    border-radius: 5px;
-}
-
-.couple-info {
-    display: flex;
-    flex-direction: column; /* Фото и инфо в столбец на маленьких экранах */
-    align-items: center;
-}
-
-.couple-info .photo{
-    margin-right: 0; /* Убираем отступ справа на мобильных */
-    margin-bottom: 10px; /* Добавим отступ между фото и инфо */
-}
-
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    font-size: 0.9em; /* Уменьшенный размер текста в таблице */
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-.rsvp form label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.rsvp form .form-group {
-    margin-bottom: 15px;
-}
-.rsvp form .question {
-    font-weight: bold;
-}
-
-.rsvp form input[type="text"],
-.rsvp form textarea {
-    width: calc(100% - 22px); /* учитываем padding и border */
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    font-size: 1em; /* Уменьшенный размер текста */
-}
-
-.rsvp form .radio-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px; /* Отступ перед блоком с radio */
-    font-size: 1em; /* Уменьшенный размер текста */
-}
-.rsvp form .radio-group label,
-.rsvp form .radio-group input {
-   margin-bottom: 5px;
-}
-
-.rsvp form .checkbox-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px; /* Отступ перед блоком с checkbox */
-    font-size: 1em; /* Уменьшенный размер текста */
-}
-
-.rsvp form .checkbox-group label,
-.rsvp form .checkbox-group input {
-   margin-bottom: 5px;
-}
-
-
-
-.rsvp form button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-  font-size: 1em; /* Уменьшенный размер текста */
-}
-
-.contacts a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-  font-size: 0.9em; /* Уменьшенный размер текста */
-}
-
-
-/* Стили для цветовых мазков */
-
-.color-swatches {
-  display: flex; /* Мазки в строку */
-  align-items: center;
-  margin-top: 5px;
-}
-
-.color-swatch {
-  width: 50px; /* Размер мазка */
-    height: auto; /*  высота автоматически */
-  margin-right: 10px;
-}
-.color-swatch:hover {
-  cursor: pointer;
-    transform: scale(1.1);
-}
-/* Стили для пояснения дресс-кода */
-.dresscode-note {
-  margin-top: 10px;
-  font-size: 1.1em;
-  color: #555; /* Более темный цвет текста */
-  line-height: 1.4;
-  text-align: center; /* Выравнивание по центру */
-    font-style: italic;
-    margin-bottom: 10px;
-}
-
-
-/* Медиазапросы для маленьких экранов */
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 1.8em; /* Еще меньше заголовок */
+      const countdownElement = document.getElementById('countdown');
+      countdownElement.innerHTML = `До свадьбы: ${days} дн. ${hours} ч. ${minutes} мин. ${seconds} сек.`;
+    } else {
+      const countdownElement = document.getElementById('countdown');
+      countdownElement.innerHTML = "Свадьба уже прошла!";
     }
-  #countdown {
-        font-size: 1em; /* Еще меньше таймер */
-    }
-}
+  }
+
+  updateCountdown(); // Запустить счетчик сразу
+  setInterval(updateCountdown, 1000); // Обновлять счетчик каждую секунду
+
+
+  // 2. Форма опроса
+    const alcoholOtherRadio = document.getElementById('alcohol-other');
+    const alcoholOtherText = document.getElementById('alcohol-other-text');
+
+    alcoholOtherRadio.addEventListener('change', function() {
+        if (this.checked) {
+            alcoholOtherText.style.display = 'inline-block';
+        } else {
+            alcoholOtherText.style.display = 'none';
+        }
+    });
+
+    const rsvpForm = document.getElementById('rsvp-form');
+
+    rsvpForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(rsvpForm);
+        const name = formData.get('name');
+        const attending = formData.get('attending');
+       const alcoholCheckboxes = formData.getAll('alcohol');
+
+        const alcoholOtherTextValue = formData.get('alcohol-other-text') || '';
+        const comments = formData.get('comments');
+
+         let alcoholMessage = '';
+
+        if (alcoholCheckboxes.includes('other') && alcoholOtherTextValue) {
+             alcoholCheckboxes = alcoholCheckboxes.filter(item => item !== 'other') //фильтруем "other"
+            alcoholMessage = ` (Другое: ${alcoholOtherTextValue}, Предпочитает: ${alcoholCheckboxes.join(', ')})`;
+         }
+         else if(alcoholCheckboxes.length > 0) {
+            alcoholMessage = ` (Предпочитает: ${alcoholCheckboxes.join(', ')})`;
+        }
+
+
+        alert(`Имя: ${name}\nБудет присутствовать: ${attending}\nПредпочтения в алкоголе: ${alcoholMessage}\nКомментарии: ${comments}`);
+
+        rsvpForm.reset();
+       alcoholOtherText.style.display = 'none';
+    });
+});
