@@ -23,11 +23,12 @@ header h1 {
 #countdown {
     font-size: 1.2em; /* Уменьшенный размер счетчика */
     margin-top: 10px;
-  text-align: center; /* Выравнивание по центру */
+    text-align: center; /* Выравнивание по центру */
     padding: 20px 0; /* Отступы сверху и снизу */
-     background-color: #f0f0f0;
+    background-color: #f0f0f0;
     border-radius: 5px;
     margin: 20px 0;
+    display: block; /* Добавлено */
 }
 
 main {
