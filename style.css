@@ -3,8 +3,12 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background-color: #f4f4f4;
+    background-color: #f4f4f4; /* Цвет фона по умолчанию*/
     color: #333;
+  background-image: url("background.jpg"); /* Фоновое изображение */
+    background-size: cover; /* Масштабирование изображения */
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Фиксируем фоновое изображение */
 }
 
 header {
