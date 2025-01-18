@@ -3,37 +3,37 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background-color: #f4f4f4; /* Цвет фона по умолчанию, на всякий случай*/
+    background-color: transparent;
     color: #333;
-  background-image: url("background.jpg"); /* Фоновое изображение */
-    background-size: cover; /* Масштабирование изображения */
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* Фиксируем фоновое изображение */
-  overflow-x: hidden; /* Убираем горизонтальную полосу прокрутки если что-то вылезает за область */
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
 }
 
 header {
-    background-color: transparent; /* делаем фон header прозрачным*/
+    background-color: transparent;
     padding: 20px;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
-    font-size: 2em; /* Уменьшенный размер заголовка */
+    font-size: 2em;
     margin-bottom: 10px;
     color: #007bff;
 }
 
 #countdown {
-    font-size: 1.2em; /* Уменьшенный размер счетчика */
+    font-size: 1.2em;
     margin-top: 10px;
-    text-align: center; /* Выравнивание по центру */
-    padding: 20px 0; /* Отступы сверху и снизу */
-    background-color: transparent; /* делаем фон таймера прозрачным*/
+    text-align: center;
+    padding: 20px 0;
+    background-color: transparent;
     border-radius: 5px;
     margin: 20px 0;
-    display: block; /* Добавлено */
+    display: block;
 }
 
 main {
@@ -41,20 +41,27 @@ main {
 }
 
 section {
-    background-color: transparent; /* делаем фон section прозрачным*/
+    background-color: transparent;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+    opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 
+}
+section.show {
+  opacity: 1;
+    transform: translateY(0);
+}
 section h2 {
     color: #007bff;
     margin-top: 0;
 }
 
 .couple-info img{
-    width: 100px; /* Уменьшенные размеры фото */
+    width: 100px;
     height: auto;
     margin: 10px;
     border-radius: 5px;
@@ -62,13 +69,21 @@ section h2 {
 
 .couple-info {
     display: flex;
-    flex-direction: column; /* Фото и инфо в столбец на маленьких экранах */
+    flex-direction: column;
     align-items: center;
 }
 
 .couple-info .photo{
-    margin-right: 0; /* Убираем отступ справа на мобильных */
-    margin-bottom: 10px; /* Добавим отступ между фото и инфо */
+    margin-right: 0;
+    margin-bottom: 10px;
+}
+
+.location-info img {
+  display: block; /* Размещаем изображение по центру */
+   margin: 0 auto; /* Центрируем по горизонтали */
+  max-width: 300px;
+   height: auto;
+  margin-bottom: 15px; /* Добавляем отступ снизу */
 }
 
 
@@ -82,7 +97,7 @@ th, td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
-    font-size: 0.9em; /* Уменьшенный размер текста в таблице */
+    font-size: 0.9em;
 }
 
 th {
@@ -103,19 +118,19 @@ th {
 
 .rsvp form input[type="text"],
 .rsvp form textarea {
-    width: calc(100% - 22px); /* учитываем padding и border */
+    width: calc(100% - 22px);
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    font-size: 1em; /* Уменьшенный размер текста */
+    font-size: 1em;
 }
 
 .rsvp form .radio-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px; /* Отступ перед блоком с radio */
-    font-size: 1em; /* Уменьшенный размер текста */
+    margin-bottom: 10px;
+    font-size: 1em;
 }
 .rsvp form .radio-group label,
 .rsvp form .radio-group input {
@@ -125,8 +140,8 @@ th {
 .rsvp form .checkbox-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px; /* Отступ перед блоком с checkbox */
-    font-size: 1em; /* Уменьшенный размер текста */
+    margin-bottom: 10px;
+    font-size: 1em;
 }
 
 .rsvp form .checkbox-group label,
@@ -142,7 +157,7 @@ th {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
-  font-size: 1em; /* Уменьшенный размер текста */
+  font-size: 1em;
 }
 
 .contacts a {
@@ -155,21 +170,21 @@ footer {
     color: #fff;
     padding: 10px;
     text-align: center;
-  font-size: 0.9em; /* Уменьшенный размер текста */
+  font-size: 0.9em;
 }
 
 
 /* Стили для цветовых мазков */
 
 .color-swatches {
-  display: flex; /* Мазки в строку */
+  display: flex;
   align-items: center;
   margin-top: 5px;
 }
 
 .color-swatch {
-  width: 50px; /* Размер мазка */
-    height: auto; /*  высота автоматически */
+  width: 50px;
+    height: auto;
   margin-right: 10px;
 }
 .color-swatch:hover {
@@ -180,9 +195,9 @@ footer {
 .dresscode-note {
   margin-top: 10px;
   font-size: 1.1em;
-  color: #555; /* Более темный цвет текста */
+  color: #555;
   line-height: 1.4;
-  text-align: center; /* Выравнивание по центру */
+  text-align: center;
     font-style: italic;
     margin-bottom: 10px;
 }
@@ -191,9 +206,9 @@ footer {
 /* Медиазапросы для маленьких экранов */
 @media (max-width: 600px) {
     header h1 {
-        font-size: 1.8em; /* Еще меньше заголовок */
+        font-size: 1.8em;
     }
   #countdown {
-        font-size: 1em; /* Еще меньше таймер */
+        font-size: 1em;
     }
 }
