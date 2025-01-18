@@ -163,21 +163,23 @@ footer {
 }
 
 .color-swatch {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  border-radius: 5px; /* Скругление краев */
+  width: 50px; /* Размер мазка */
+    height: auto; /*  высота автоматически */
   margin-right: 10px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Тень для объема */
-  cursor: pointer; /* Курсор-указатель */
 }
-
+.color-swatch:hover {
+  cursor: pointer;
+    transform: scale(1.1);
+}
 /* Стили для пояснения дресс-кода */
 .dresscode-note {
   margin-top: 10px;
-  font-size: 0.9em;
-  color: #666; /* Более светлый цвет текста */
+  font-size: 1.1em;
+  color: #555; /* Более темный цвет текста */
   line-height: 1.4;
+  text-align: center; /* Выравнивание по центру */
+    font-style: italic;
+    margin-bottom: 10px;
 }
 
 
