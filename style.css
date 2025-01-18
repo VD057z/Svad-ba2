@@ -1,0 +1,178 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2em; /* Уменьшенный размер заголовка */
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+#countdown {
+    font-size: 1.2em; /* Уменьшенный размер счетчика */
+    margin-top: 10px;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: #007bff;
+    margin-top: 0;
+}
+
+.couple-info img{
+    width: 100px; /* Уменьшенные размеры фото */
+    height: auto;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.couple-info {
+    display: flex;
+    flex-direction: column; /* Фото и инфо в столбец на маленьких экранах */
+    align-items: center;
+}
+
+.couple-info .photo{
+    margin-right: 0; /* Убираем отступ справа на мобильных */
+    margin-bottom: 10px; /* Добавим отступ между фото и инфо */
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 0.9em; /* Уменьшенный размер текста в таблице */
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.rsvp form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.rsvp form .form-group {
+    margin-bottom: 15px;
+}
+.rsvp form .question {
+    font-weight: bold;
+}
+
+.rsvp form input[type="text"],
+.rsvp form textarea {
+    width: calc(100% - 22px); /* учитываем padding и border */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 1em; /* Уменьшенный размер текста */
+}
+
+.rsvp form .radio-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px; /* Отступ перед блоком с radio */
+    font-size: 1em; /* Уменьшенный размер текста */
+}
+.rsvp form .radio-group label,
+.rsvp form .radio-group input {
+   margin-bottom: 5px;
+}
+
+.rsvp form .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px; /* Отступ перед блоком с checkbox */
+    font-size: 1em; /* Уменьшенный размер текста */
+}
+
+.rsvp form .checkbox-group label,
+.rsvp form .checkbox-group input {
+   margin-bottom: 5px;
+}
+
+
+
+.rsvp form button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  font-size: 1em; /* Уменьшенный размер текста */
+}
+
+.contacts a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  font-size: 0.9em; /* Уменьшенный размер текста */
+}
+
+
+/* Стили для цветовых мазков */
+
+.color-swatches {
+  display: flex; /* Мазки в строку */
+  align-items: center;
+  margin-top: 5px;
+}
+
+.color-swatch {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px; /* Скругление краев */
+  margin-right: 10px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Тень для объема */
+  cursor: pointer; /* Курсор-указатель */
+}
+
+
+/* Медиазапросы для маленьких экранов */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.8em; /* Еще меньше заголовок */
+    }
+  #countdown {
+        font-size: 1em; /* Еще меньше таймер */
+    }
+}
