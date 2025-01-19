@@ -7,7 +7,7 @@ const port = 3000;
 app.use(bodyParser.json());
 
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN; // токен вашего бота
-const TELEGRAM_CHAT_IDS = process.env.TELEGRAM_CHAT_IDS ? process.env.TELEGRAM_CHAT_IDS.split(',') : []; // Идентификаторы получателей
+const TELEGRAM_CHAT_IDS = process.env.TELEGRAM_CHAT_IDS.split(',') : []; // Идентификаторы получателей
 
 app.post('/send-telegram', async (req, res) => {
     const { name, attending, alcoholMessage, comments } = req.body;
