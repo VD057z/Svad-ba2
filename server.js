@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('node:path');
 const app = express();
-const port = process.env.PORT || 10000; // Используйте process.env.PORT, для Heroku, Render и т.д.
+const port = process.env.PORT || 3000; // Используйте process.env.PORT, для Heroku, Render и т.д.
 
 app.use(bodyParser.json());
 
@@ -24,8 +24,18 @@ app.post('/send-telegram', async (req, res) => {
 });
 
 app.post('/download', (req, res) => {
-    console.log(req.body);
-    res.send('Данные получены');
+    const password = req.body.password;
+    if (password) {
+        if (password.trim() === '057057') {
+            res.setHeader('Content-disposition', 'attachment; filename=test_data.csv');
+            res.setHeader('Content-type', 'text/csv');
+            res.end('test,test2,test3\n'); // Временная статическая строка
+            } else {
+               res.status(401).send('Неверный пароль');
+            }
+      } else{
+           res.status(400).send('Поле пароля не заполнено')
+        }
 });
 
 app.get('/download', (req, res) => {
