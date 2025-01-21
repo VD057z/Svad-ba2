@@ -24,21 +24,31 @@ app.post('/send-telegram', async (req, res) => {
 });
 
 app.post('/download', (req, res) => {
-    const password = req.body.password;
-    if (password.trim()  === '10082008') {
-        res.setHeader('Content-disposition', 'attachment; filename=test_data.csv');
-        res.setHeader('Content-type', 'text/csv');
-        res.end('test,test2,test3\n'); // Временная статическая строка
-    } else {
-        res.status(401).send('Неверный пароль');
-    }
+  try {
+      const password = req.body.password;
+      if (password) { // Проверка на undefined
+        if (password.trim() === '10082008') {
+          res.setHeader('Content-disposition', 'attachment; filename=test_data.csv');
+          res.setHeader('Content-type', 'text/csv');
+          res.end('test,test2,test3\n');
+          } else {
+             res.status(401).send('Неверный пароль');
+          }
+       } else {
+            res.status(400).send('Поле пароля не заполнено')
+        }
+  }
+   catch(error){
+      console.error('Ошибка в /download', error)
+      res.status(500).send('Ошибка сервера')
+   }
 });
 
 app.get('/download', (req, res) => {
   res.send(`
       <form method="post" action="/download">
         <label for="password">Введите пароль:</label>
-        <input type="password" id="password" name="password" required><br><br>
+        <input type="password" id="password" name="password" required autocomplete="off"><br><br>
         <button type="submit">Выгрузить данные</button>
       </form>
     `);
