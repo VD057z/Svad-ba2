@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('node:path');
 const app = express();
-const port = process.env.PORT || 3000; // Используйте process.env.PORT, для Heroku, Render и т.д.
+const port = process.env.PORT || 10000; // Используйте process.env.PORT, для Heroku, Render и т.д.
 
 app.use(bodyParser.json());
 
