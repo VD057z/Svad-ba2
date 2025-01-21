@@ -3,26 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Свадьба Линара и Аделины</title>
+    <h1>Свадьба <br>Линара и Аделины</h1>
      <link rel="stylesheet" href="style.css">
+      <style>
+       body {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+         header h1 {
+            white-space: pre-line;
+          }
+        .couple-info p {
+           margin-bottom: 30px;
+        }
+
+       .form-group {
+           display: flex;
+           flex-direction: column;
+           align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .form-group label {
+           margin-bottom: 5px;
+        }
+     </style>
 </head>
 <body>
     <header>
-        <h1>Свадьба Линара и Аделины</h1>
+        <h1>Свадьба <br>Линара и Аделины</h1>
     </header>
 
     <main>
         <section class="couple-info">
-            <div class="photo">
-              <img src="" alt="Фото жениха">
-              <img src="" alt="Фото невесты">
-            </div>
             <p>Линар & Аделина</p>
         </section>
       
       <section class="location-info">
           <h2>Место свадьбы</h2>
-          <img src="08-meliot-spa-otel-300-min.png" alt="Фото места свадьбы">
+          <img src="" alt="Фото места свадьбы">
           <p>СПА-Отель "Мелиот"</p>
           <p>г. Челябинск, ул. С. Юлаева, 17г</p>
       </section>
@@ -34,9 +54,9 @@
       
         <section class="dresscode">
             <h2>Дресс-код</h2>
-	   <p class="dresscode-note">
+	         <p class="dresscode-note">
             Мы будем признательны, если при выборе нарядов вы придержитесь цветовой гаммы нашего торжества!
-          </p>
+            </p>
             <div class="color-swatches">
                <img class="color-swatch" src="brush1.png" alt="Темно-серый">
                <img class="color-swatch" src="brush2.png" alt="Светло-зеленый">
@@ -46,20 +66,21 @@
             </div>
         </section>
 
-        <section class="rsvp">
-            <h2>Анкета гостя</h2>
-            <form id="rsvp-form">
-                <div class="form-group">
+      <section class="rsvp">
+        <h2>Анкета гостя</h2>
+         <p>Пожалуйста, подтвердите ваше присутствие:</p>
+            <form id="rsvp-form" method="post" action="/send-telegram">
+               <div class="form-group">
                     <label for="name">Ваше ФИО:</label>
                     <input type="text" id="name" name="name" required>
                 </div>
               
-               <div class="form-group">
-                   <label class="question">Вы сможете присутствовать на свадьбе?</label>
+              <div class="form-group">
+                    <label class="question">Вы сможете присутствовать на свадьбе?</label>
                     <div class="radio-group">
-                        <input type="radio" id="attending-yes" name="attending" value="yes" required>
+                        <input type="radio" id="attending-yes" name="attending" value="Да" required>
                         <label for="attending-yes">Да</label>
-                        <input type="radio" id="attending-no" name="attending" value="no" required>
+                        <input type="radio" id="attending-no" name="attending" value="Нет" required>
                         <label for="attending-no">Нет</label>
                   </div>
                </div>
@@ -67,18 +88,14 @@
                <div class="form-group">
                     <label class="question">Какой алкоголь вы предпочитаете?</label>
                     <div class="checkbox-group">
-                        <input type="checkbox" id="alcohol-champagne" name="alcohol" value="champagne">
-                        <label for="alcohol-semi-sweet-champagne">Шампанское</label>
-                        <input type="checkbox" id="alcohol-red-wine" name="alcohol" value="red_wine">
-                        <label for="alcohol-red-wine">Вино красное</label>
-                        <input type="checkbox" id="alcohol-semi-dry-wine" name="alcohol" value="white_wine">
-                        <label for="alcohol-white-wine">Вино белое</label>
-                        <input type="checkbox" id="alcohol-vodka" name="alcohol" value="vodka">
-                        <label for="alcohol-vodka">Водка</label>
-                         <input type="checkbox" id="alcohol-none" name="alcohol" value="none">
-                        <label for="alcohol-none">Не пью</label>
-                         <input type="checkbox" id="alcohol-other" name="alcohol" value="other">
-                        <label for="alcohol-other">Свой вариант</label>
+                         <input type="checkbox" id="alcohol-wine" name="alcohol" value="Вино">
+                        <label for="alcohol-wine">Вино</label>
+                        <input type="checkbox" id="alcohol-beer" name="alcohol" value="Пиво">
+                        <label for="alcohol-beer">Пиво</label>
+                        <input type="checkbox" id="alcohol-strong" name="alcohol" value="Крепкий">
+                        <label for="alcohol-strong">Крепкий</label>
+                        <input type="checkbox" id="alcohol-other" name="alcohol" value="other">
+                        <label for="alcohol-other">Другое</label>
                         <input type="text" id="alcohol-other-text" name="alcohol-other-text" style="display: none;">
                     </div>
                 </div>
@@ -91,6 +108,7 @@
                 <button type="submit">Отправить</button>
             </form>
         </section>
+
       <div id="countdown"></div>
         <section class="contacts">
             <h2>Контакты</h2>
