@@ -23,10 +23,12 @@ app.post('/send-telegram', async (req, res) => {
 });
 
 app.post('/download', (req, res) => {
+    console.log(req); // Выводим req в консоль
     console.log(req.body); // Выводим req.body в консоль
     const password = req.body.password;
     if (password) {
-        if (password() === '10082008') {
+      // Ошибка в этой строчке:
+        if (password === '10082008') {
             res.setHeader('Content-disposition', 'attachment; filename=test_data.csv');
             res.setHeader('Content-type', 'text/csv');
             res.end('test,test2,test3\n');
