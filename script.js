@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
       const countdownElement = document.getElementById('countdown');
       countdownElement.innerHTML = `До свадьбы: ${days} дн. ${hours} ч. ${minutes} сек.`;
     } else {
