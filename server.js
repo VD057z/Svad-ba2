@@ -3,17 +3,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('node:path');
 const app = express();
-const port = process.env.PORT || 10000; // Используйте process.env.PORT, для Heroku, Render и т.д.
+const port = process.env.PORT || 10000;
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true })); // <- Добавляем эту строку
-// ---
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(express.static(path.join(__dirname, './')));
-  // Handle GET requests to the root path ("/")
 app.get('/', (req, res) => {
-      res.sendFile(path.join(__dirname, 'index.html'));
-   });
-// ---
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 let surveyData = [];
 
@@ -24,14 +22,15 @@ app.post('/send-telegram', async (req, res) => {
 });
 
 app.post('/download', (req, res) => {
-    console.log(req); // Выводим req в консоль
-    console.log(req.body); // Выводим req.body в консоль
+    console.log(req);
+    console.log(req.body);
     const password = req.body.password;
     if (password) {
         if (password === '10082008') {
-            res.setHeader('Content-disposition', 'attachment; filename=test_data.csv');
+            const csv = convertToCSV(surveyData); // Преобразуем данные в CSV
+            res.setHeader('Content-disposition', 'attachment; filename=survey_data.csv');
             res.setHeader('Content-type', 'text/csv');
-            res.end('test,test2,test3\n');
+            res.end(csv); // Отправляем сформированный CSV
         } else {
            res.status(401).send('Неверный пароль');
         }
@@ -53,3 +52,10 @@ app.get('/download', (req, res) => {
 app.listen(port, () => {
     console.log(`Сервер запущен на порту ${port}`);
 });
+
+// Функция для преобразования массива объектов в CSV
+function convertToCSV(data) {
+    const headers = Object.keys(data[0] || {name: "", attending: "", alcoholMessage: "", comments: ""});
+    const rows = data.map(obj => headers.map(header => obj[header] || "").join(','));
+    return [headers.join(','), ...rows].join('\n');
+}
