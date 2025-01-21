@@ -6,11 +6,10 @@ const app = express();
 const port = process.env.PORT || 10000; // Используйте process.env.PORT, для Heroku, Render и т.д.
 
 app.use(bodyParser.json());
-
 // ---
 app.use(express.static(path.join(__dirname, './')));
   // Handle GET requests to the root path ("/")
-  app.get('/', (req, res) => {
+app.get('/', (req, res) => {
       res.sendFile(path.join(__dirname, 'index.html'));
    });
 // ---
