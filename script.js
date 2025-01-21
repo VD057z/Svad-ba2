@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
   // 1. Счетчик обратного отсчета
   function updateCountdown() {
-    const weddingDate = new Date('[2025, 6, 19]T00:00:00'); // Замените [Год, месяц (0-11), день] на дату вашей свадьбы. Месяц начинается с 0 (январь)
-    const now = new Date();
+    const weddingDate = new Date(2025, 6, 7); // Замените [Год, месяц (0-11), день] на дату вашей свадьбы. Месяц начинается с 0 (январь)
+    const now = new Date(2025, 0, 21);
     const timeDifference = weddingDate.getTime() - now.getTime();
 
     if (timeDifference > 0) {
