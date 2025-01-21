@@ -25,7 +25,7 @@ app.post('/send-telegram', async (req, res) => {
 
 app.post('/download', (req, res) => {
     const password = req.body.password;
-    if (password === '057057') {
+    if (password.trim()  === '10082008') {
         res.setHeader('Content-disposition', 'attachment; filename=test_data.csv');
         res.setHeader('Content-type', 'text/csv');
         res.end('test,test2,test3\n'); // Временная статическая строка
