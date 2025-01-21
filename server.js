@@ -27,7 +27,7 @@ app.post('/download', (req, res) => {
     console.log(req.body); // Выводим req.body в консоль
     const password = req.body.password;
     if (password) {
-        if (password.trim() === '10082008') {
+        if (password() === '10082008') {
             res.setHeader('Content-disposition', 'attachment; filename=test_data.csv');
             res.setHeader('Content-type', 'text/csv');
             res.end('test,test2,test3\n');
