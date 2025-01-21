@@ -24,24 +24,8 @@ app.post('/send-telegram', async (req, res) => {
 });
 
 app.post('/download', (req, res) => {
-  try {
-      const password = req.body.password;
-      if (password) { // Проверка на undefined
-        if (password.trim() === '10082008') {
-          res.setHeader('Content-disposition', 'attachment; filename=test_data.csv');
-          res.setHeader('Content-type', 'text/csv');
-          res.end('test,test2,test3\n');
-          } else {
-             res.status(401).send('Неверный пароль');
-          }
-       } else {
-            res.status(400).send('Поле пароля не заполнено')
-        }
-  }
-   catch(error){
-      console.error('Ошибка в /download', error)
-      res.status(500).send('Ошибка сервера')
-   }
+    console.log(req.body);
+    res.send('Данные получены');
 });
 
 app.get('/download', (req, res) => {
