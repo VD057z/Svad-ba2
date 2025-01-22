@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-let surveyData = [];
+let surveyData = []; // Объявляем массив surveyData здесь
 
 app.post('/send-telegram', async (req, res) => {
     const { name, attending, alcoholMessage, comments } = req.body;
@@ -27,15 +27,15 @@ app.post('/download', (req, res) => {
     const password = req.body.password;
     if (password) {
         if (password === '10082008') {
-            const csv = convertToCSV(surveyData); // Преобразуем данные в CSV
+            const csv = convertToCSV(surveyData);
             res.setHeader('Content-disposition', 'attachment; filename=survey_data.csv');
             res.setHeader('Content-type', 'text/csv');
-            res.end(csv); // Отправляем сформированный CSV
+            res.end(csv);
         } else {
-           res.status(401).send('Неверный пароль');
+            res.status(401).send('Кто просил сюда лезть?');
         }
     } else {
-        res.status(400).send('Поле пароля не заполнено');
+        res.status(400).send('Введи пароль');
     }
 });
 
@@ -53,7 +53,6 @@ app.listen(port, () => {
     console.log(`Сервер запущен на порту ${port}`);
 });
 
-// Функция для преобразования массива объектов в CSV
 function convertToCSV(data) {
     const headers = Object.keys(data[0] || {name: "", attending: "", alcoholMessage: "", comments: ""});
     const rows = data.map(obj => headers.map(header => obj[header] || "").join(','));
